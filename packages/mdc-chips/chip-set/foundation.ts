@@ -136,9 +136,9 @@ export class MDCChipSetFoundation extends MDCFoundation<MDCChipSetAdapter> {
     }
 
     const isRTL = this.adapter_.isRTL();
-    const shouldIncrement = key === chipStrings.ARROW_RIGHT_KEY && !isRTL
-        || key === chipStrings.ARROW_LEFT_KEY && isRTL
-        || key === chipStrings.ARROW_DOWN_KEY;
+    const shouldIncrement = chipStrings.ARROW_RIGHT_KEY.includes(key) && !isRTL
+        || chipStrings.ARROW_LEFT_KEY.includes(key) && isRTL
+        || chipStrings.ARROW_DOWN_KEY.includes(key);
     const isHome = key === chipStrings.HOME_KEY;
     const isEnd = key === chipStrings.END_KEY;
     if (shouldIncrement) {
@@ -182,7 +182,8 @@ export class MDCChipSetFoundation extends MDCFoundation<MDCChipSetAdapter> {
 
   private getDirection_(key: string): Direction {
     const isRTL = this.adapter_.isRTL();
-    if (key === chipStrings.ARROW_LEFT_KEY && !isRTL || key === chipStrings.ARROW_RIGHT_KEY && isRTL) {
+    if (chipStrings.ARROW_LEFT_KEY.includes(key) && !isRTL ||
+        chipStrings.ARROW_RIGHT_KEY.includes(key) && isRTL) {
       return Direction.LEFT;
     }
 

@@ -286,7 +286,8 @@ export class MDCChipFoundation extends MDCFoundation<MDCChipAdapter> {
 
   private getDirection_(key: string): Direction {
     const isRTL = this.adapter_.isRTL();
-    if (key === strings.ARROW_LEFT_KEY && !isRTL || key === strings.ARROW_RIGHT_KEY && isRTL) {
+    if (strings.ARROW_LEFT_KEY.includes(key) && !isRTL ||
+        strings.ARROW_RIGHT_KEY.includes(key) && isRTL) {
       return Direction.LEFT;
     }
 
